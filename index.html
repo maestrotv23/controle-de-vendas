@@ -11,8 +11,6 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Dashboard de Vendas</title>
-<!-- config.js é gerado pelo Netlify com as variáveis de ambiente — nunca commitar -->
-<script src="config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&family=Instrument+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -33,17 +31,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.12;}
 .blob-a{width:500px;height:500px;background:var(--green);top:-150px;right:-100px;}
 .blob-b{width:400px;height:400px;background:var(--blue);bottom:-80px;left:-100px;}
-
+ 
 /* LOADING */
 #loading{position:fixed;inset:0;background:var(--ink);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
 .load-logo{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;display:flex;align-items:center;gap:10px;}
 .load-dot{width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green);animation:pulse 1.2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
 .load-text{font-size:13px;color:var(--muted);}
-
+ 
 /* LAYOUT */
 .app{display:flex;height:100vh;overflow:hidden;position:relative;z-index:1;}
-
+ 
 /* SIDEBAR */
 .sidebar{width:var(--sidebar);flex-shrink:0;background:var(--ink2);border-right:1px solid var(--line2);display:flex;flex-direction:column;padding:28px 0;height:100vh;overflow-y:auto;}
 .sidebar-brand{padding:0 20px 28px;border-bottom:1px solid var(--line);margin-bottom:16px;}
@@ -60,7 +58,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .sync-info{padding:8px 12px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 .sync-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
 .sync-dot.off{background:var(--red);}
-
+ 
 /* MAIN */
 .main{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
 .topbar-pc{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid var(--line2);background:rgba(13,14,20,.8);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10;}
@@ -70,12 +68,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .btn-nav{width:28px;height:28px;border-radius:50%;background:var(--ink3);border:1px solid var(--line2);color:var(--muted2);font-size:14px;cursor:pointer;display:grid;place-items:center;transition:all .2s;}
 .btn-nav:hover{background:var(--green);color:var(--ink);border-color:var(--green);}
 .content{padding:28px 32px;flex:1;}
-
+ 
 /* VIEWS */
 .view{display:none;}
 .view.on{display:block;animation:up .3s cubic-bezier(.22,1,.36,1);}
 @keyframes up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
+ 
 /* KPI */
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
 .kpi{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--r);padding:20px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
@@ -84,7 +82,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .kpi-label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
 .kpi-val{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:5px;}
 .kpi-sub{font-size:11px;color:var(--muted);}
-
+ 
 /* STATUS */
 .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
 .sc{border-radius:var(--r);padding:20px 22px;border:1px solid;display:flex;align-items:center;gap:16px;}
@@ -100,7 +98,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .sc.rec .sc-val{color:var(--green);}
 .sc.pend .sc-val{color:var(--yellow);}
 .sc-count{font-size:11px;color:var(--muted);}
-
+ 
 /* CHART */
 .chart-card{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--r);padding:22px;margin-bottom:24px;}
 .chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
@@ -112,7 +110,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;}
 .bar-inner{width:100%;border-radius:5px 5px 0 0;min-height:3px;transition:height .5s cubic-bezier(.34,1.56,.64,1);}
 .bar-lbl{font-family:'Instrument Mono',monospace;font-size:10px;color:var(--muted);}
-
+ 
 /* TABLE */
 .table-card{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;}
 .table-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);}
@@ -138,13 +136,13 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .btn-dup:hover{color:var(--blue);background:var(--bbg);}
 .empty{padding:48px;text-align:center;color:var(--muted);}
 .empty-icon{font-size:36px;display:block;margin-bottom:12px;}
-
+ 
 /* FILTERS */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
 .filt-btn{padding:6px 16px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--line2);background:var(--ink2);color:var(--muted);transition:all .2s;}
 .filt-btn.on{background:var(--ink3);border-color:var(--muted2);color:var(--snow);}
 .filt-btn:hover:not(.on){color:var(--snow);}
-
+ 
 /* FORM */
 .form-wrap{max-width:620px;}
 .form-card{background:var(--ink2);border:1px solid var(--line2);border-radius:20px;padding:32px;}
@@ -179,7 +177,7 @@ input::placeholder{color:var(--muted);}
 .submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,229,160,.35);}
 .submit:active{transform:scale(.98);}
 .submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-
+ 
 /* MODAL */
 .overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;}
 .overlay.open{display:flex;}
@@ -204,12 +202,12 @@ input::placeholder{color:var(--muted);}
 .btn-cancel:hover{border-color:var(--muted2);color:var(--snow);}
 .btn-dup-ok{padding:13px;border-radius:11px;border:none;background:var(--blue);color:#fff;font-family:'Clash Display',sans-serif;font-size:14px;font-weight:700;cursor:pointer;}
 .btn-dup-ok:hover{transform:translateY(-1px);}
-
+ 
 /* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--ink2);border:1px solid var(--green);color:var(--green);padding:12px 22px;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 30px rgba(0,0,0,.4);}
 .toast.show{opacity:1;transform:translateY(0);}
 .toast.err{border-color:var(--red);color:var(--red);}
-
+ 
 /* MOBILE */
 @media(max-width:768px){
   .sidebar{display:none;}
@@ -258,7 +256,7 @@ input::placeholder{color:var(--muted);}
   .bottom-nav{display:none;}
   .sale-list{display:none;}
 }
-
+ 
 /* BOTTOM NAV */
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(22,23,32,.97);border-top:1px solid var(--line2);backdrop-filter:blur(16px);padding-bottom:var(--safe-b);height:calc(var(--nav-h) + var(--safe-b));}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:'Cabinet Grotesk',sans-serif;position:relative;transition:color .2s;}
@@ -269,15 +267,15 @@ input::placeholder{color:var(--muted);}
 </style>
 </head>
 <body>
-
+ 
 <div id="loading">
   <div class="load-logo"><div class="load-dot"></div>Dashboard de Vendas</div>
   <div class="load-text" id="load-txt">Conectando ao banco de dados...</div>
 </div>
-
+ 
 <div class="blob blob-a"></div>
 <div class="blob blob-b"></div>
-
+ 
 <div class="app" id="app" style="display:none;">
   <aside class="sidebar">
     <div class="sidebar-brand">
@@ -294,7 +292,7 @@ input::placeholder{color:var(--muted);}
       <div class="sync-info"><div class="sync-dot" id="sync-dot"></div><span id="sync-txt">Conectando...</span></div>
     </div>
   </aside>
-
+ 
   <div class="main">
     <div class="topbar-pc">
       <div class="page-title" id="page-title">Dashboard</div>
@@ -304,9 +302,9 @@ input::placeholder{color:var(--muted);}
         <button class="btn-nav" onclick="changeMonth(1)">›</button>
       </div>
     </div>
-
+ 
     <div class="content">
-
+ 
       <!-- DASHBOARD -->
       <div class="view on" id="view-dash">
         <div class="kpi-grid">
@@ -329,7 +327,7 @@ input::placeholder{color:var(--muted);}
           <div class="sale-list" id="dash-mobile-list"></div>
         </div>
       </div>
-
+ 
       <!-- NOVA VENDA -->
       <div class="view" id="view-form">
         <div class="form-wrap">
@@ -380,7 +378,7 @@ input::placeholder{color:var(--muted);}
           </div>
         </div>
       </div>
-
+ 
       <!-- HISTÓRICO -->
       <div class="view" id="view-hist">
         <div class="filters">
@@ -397,18 +395,18 @@ input::placeholder{color:var(--muted);}
           <div class="sale-list" id="hist-mobile-list"></div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
+ 
 <!-- BOTTOM NAV MOBILE -->
 <nav class="bottom-nav" id="bottom-nav">
   <button class="nav-item on" id="mnav-dash" onclick="goTo('dash')"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></button>
   <button class="nav-item" id="mnav-form" onclick="goTo('form')"><span class="nav-icon">＋</span><span class="nav-label">Nova Venda</span></button>
   <button class="nav-item" id="mnav-hist" onclick="goTo('hist')"><span class="nav-icon">📋</span><span class="nav-label">Histórico</span></button>
 </nav>
-
+ 
 <!-- MODAL DUPLICAR -->
 <div class="overlay" id="overlay" onclick="closeDup(event)">
   <div class="modal">
@@ -421,45 +419,42 @@ input::placeholder{color:var(--muted);}
     <div class="modal-btns"><button class="btn-cancel" onclick="closeDup()">Cancelar</button><button class="btn-dup-ok" onclick="confirmDup()">⧉ Duplicar</button></div>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <script>
 // ── CONFIG — lida do config.js gerado pelo Netlify ──
-const SUPA_URL = window.__ENV__?.SUPABASE_URL || '';
-const SUPA_KEY = window.__ENV__?.SUPABASE_KEY || '';
+const SUPA_URL = 'https://byusywlgjcmwrbldwyzo.supabase.co';
+const SUPA_KEY = 'sb_publishable_ilKwr7GTe5L9vg-mdhrT7g_1vpY_V82';
 const H = {'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY};
-
-if(!SUPA_URL || !SUPA_KEY){
-  document.getElementById('load-txt').textContent = '⚠️ Variáveis de ambiente não configuradas.';
-}
-
+ 
+ 
 // ── STATE ──
 let vendas=[], curYear, curMonth, filtro='todos', dupId=null;
 const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const TICON={Shorts:'🩳',Reels:'🎞',Motion:'✨',YouTube:'▶️'};
-
+ 
 async function dbFetch(path,opts={}){
   const res=await fetch(SUPA_URL+'/rest/v1/'+path,{...opts,headers:{...H,...(opts.headers||{})}});
   if(!res.ok){const e=await res.text();throw new Error(e);}
   if(res.status===204)return null;
   return res.json();
 }
-
+ 
 async function loadVendas(){
   try{const d=await dbFetch('vendas?select=*&order=data.desc,id.desc');vendas=d||[];setSyncStatus(true);}
   catch(e){setSyncStatus(false);toast('Erro ao carregar dados',true);}
 }
-
+ 
 async function insertVendas(rows){return dbFetch('vendas',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(rows)});}
 async function patchVenda(id,p){return dbFetch(`vendas?id=eq.${id}`,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(p)});}
 async function removeVenda(id){return dbFetch(`vendas?id=eq.${id}`,{method:'DELETE'});}
-
+ 
 function setSyncStatus(ok){
   document.getElementById('sync-dot').className='sync-dot'+(ok?'':' off');
   document.getElementById('sync-txt').textContent=ok?'Conectado ao banco':'Sem conexão';
 }
-
+ 
 (async()=>{
   const n=new Date();curYear=n.getFullYear();curMonth=n.getMonth();
   await loadVendas();
@@ -468,16 +463,16 @@ function setSyncStatus(ok){
   document.getElementById('bottom-nav').style.display='flex';
   refresh();
 })();
-
+ 
 function refresh(){document.getElementById('monthLabel').textContent=MONTHS[curMonth]+' '+curYear;renderDash();renderHist();}
 function changeMonth(d){curMonth+=d;if(curMonth>11){curMonth=0;curYear++;}if(curMonth<0){curMonth=11;curYear--;}refresh();}
-
+ 
 function R(v){return'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtDate(s){if(!s)return'—';const p=s.split('T')[0].split('-');return p[2]+'/'+p[1]+'/'+p[0];}
 function fmtTempo(h,m){let s='';if(+h)s+=h+'h';if(+m)s+=(s?' ':'')+m+'min';return s||'—';}
 function totalMin(h,m){return(parseInt(h)||0)*60+(parseInt(m)||0);}
 function mesVendas(){return vendas.filter(v=>{if(!v.data)return false;const d=new Date(v.data);return d.getFullYear()===curYear&&d.getMonth()===curMonth;});}
-
+ 
 function renderDash(){
   const mes=mesVendas();
   const pagos=mes.filter(v=>v.status==='pago');
@@ -493,7 +488,7 @@ function renderDash(){
   document.getElementById('s-rec-c').textContent=pagos.length+' projeto'+(pagos.length!==1?'s':'');
   document.getElementById('s-pend').textContent=R(pends.reduce((s,v)=>s+parseFloat(v.valor||0),0));
   document.getElementById('s-pend-c').textContent=pends.length+' projeto'+(pends.length!==1?'s':'');
-
+ 
   const chartEl=document.getElementById('chart');
   if(!mes.length){chartEl.innerHTML='<div class="empty" style="width:100%;font-size:12px;color:var(--muted)">Sem vendas este mês</div>';}
   else{
@@ -502,13 +497,13 @@ function renderDash(){
     const maxVal=Math.max(...days.map(d=>byDay[d].pago+byDay[d].pendente));
     chartEl.innerHTML=days.map(d=>{const tot=byDay[d].pago+byDay[d].pendente;const pct=maxVal>0?(tot/maxVal*100):4;const pPct=tot>0?(byDay[d].pago/tot*100):0;return`<div class="bar-wrap"><div class="bar-inner" style="height:${Math.max(pct,4)}%;background:linear-gradient(180deg,var(--green) 0%,var(--green) ${pPct}%,var(--yellow) ${pPct}%,var(--yellow) 100%);"></div><div class="bar-lbl">d${parseInt(d)}</div></div>`;}).join('');
   }
-
+ 
   const sorted=[...mes].sort((a,b)=>new Date(b.data)-new Date(a.data));
   const tbody=document.getElementById('dash-tbody');
   tbody.innerHTML=sorted.length?sorted.map(v=>`<tr><td><b>${v.cliente||'—'}</b></td><td><span class="tipo-chip">${TICON[v.tipo]||''} ${v.tipo||'—'}</span></td><td style="font-family:'Instrument Mono',monospace;font-size:12px;color:var(--muted2)">${fmtTempo(v.horas,v.minutos)}</td><td class="${v.status==='pago'?'val-g':'val-y'}">${R(v.valor)}</td><td><span class="chip chip-${v.status==='pago'?'g':'y'}">${v.status==='pago'?'✅ Pago':'⏳ Pendente'}</span></td></tr>`).join(''):'<tr><td colspan="5"><div class="empty"><span class="empty-icon">🎬</span>Nenhuma venda este mês</div></td></tr>';
   document.getElementById('dash-mobile-list').innerHTML=sorted.length?sorted.map(v=>mCard(v,false)).join(''):'<div class="empty"><span class="empty-icon">🎬</span>Nenhuma venda este mês</div>';
 }
-
+ 
 function renderHist(){
   let data=[...vendas];
   if(filtro==='pago')data=data.filter(v=>v.status==='pago');
@@ -526,19 +521,19 @@ function renderHist(){
   </tr>`).join(''):'<tr><td colspan="7"><div class="empty"><span class="empty-icon">📁</span>Nenhum registro encontrado</div></td></tr>';
   document.getElementById('hist-mobile-list').innerHTML=data.length?data.map(v=>mCard(v,true)).join(''):'<div class="empty"><span class="empty-icon">📁</span>Nenhum registro encontrado</div>';
 }
-
+ 
 function mCard(v,actions){
   const isPago=v.status==='pago';const tempo=fmtTempo(v.horas,v.minutos);
   return`<div class="sale-card"><div class="sale-row"><div><div class="sale-name">${v.cliente||'—'}</div><div class="sale-meta"><span class="tipo-chip">${TICON[v.tipo]||''} ${v.tipo||'—'}</span>${tempo!=='—'?`<span class="sale-time">⏱ ${tempo}</span>`:''}${actions?`<span class="sale-time">${fmtDate(v.data)}</span>`:''}</div></div><div class="sale-right"><div class="sale-val ${isPago?'val-g':'val-y'}">${R(v.valor)}</div><span class="chip chip-${isPago?'g':'y'}">${isPago?'✅ Pago':'⏳ Pendente'}</span></div></div>${actions?`<div class="sale-actions"><button class="btn-ms ${isPago?'pago':'pendente'}" onclick="toggleStatus(${v.id})">${isPago?'✅ Marcar pendente':'⏳ Marcar pago'}</button><button class="btn-sm dup" onclick="openDup(${v.id})">⧉</button><button class="btn-sm del" onclick="del(${v.id})">✕</button></div>`:''}</div>`;
 }
-
+ 
 async function toggleStatus(id){
   const v=vendas.find(x=>x.id===id);if(!v)return;
   const ns=v.status==='pago'?'pendente':'pago';
   try{await patchVenda(id,{status:ns});vendas=vendas.map(x=>x.id===id?{...x,status:ns}:x);refresh();toast('Status atualizado!');}
   catch(e){toast('Erro ao atualizar',true);}
 }
-
+ 
 let tipoSel='',statusSel='';
 function selTipo(el,val){document.querySelectorAll('.tipo-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');tipoSel=val;document.getElementById('f-tipo').value=val;}
 function selStatus(val){statusSel=val;document.getElementById('f-status').value=val;document.getElementById('st-pago').className='st-opt'+(val==='pago'?' sel-g':'');document.getElementById('st-pend').className='st-opt'+(val==='pendente'?' sel-y':'');}
@@ -551,7 +546,7 @@ function updateTotal(){
   if(qty>1||val>0){prev.style.display='flex';document.getElementById('total-val').textContent=R(total);}else{prev.style.display='none';}
   document.getElementById('submit-btn').textContent=qty>1?`Registrar ${qty} vídeos — ${R(total)}`:'Registrar venda';
 }
-
+ 
 async function addVenda(){
   const cliente=document.getElementById('f-cliente').value.trim();
   const tipo=document.getElementById('f-tipo').value;
@@ -579,15 +574,15 @@ async function addVenda(){
   }catch(e){toast('Erro ao salvar. Tente novamente.',true);console.error(e);}
   btn.disabled=false;
 }
-
+ 
 async function del(id){
   if(!confirm('Remover esta venda?'))return;
   try{await removeVenda(id);vendas=vendas.filter(v=>v.id!==id);refresh();toast('Venda removida.');}
   catch(e){toast('Erro ao remover',true);}
 }
-
+ 
 function setFilt(f,el){filtro=f;document.querySelectorAll('.filt-btn').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderHist();}
-
+ 
 function openDup(id){
   const v=vendas.find(x=>x.id===id);if(!v)return;
   dupId=id;
@@ -614,7 +609,7 @@ async function confirmDup(){
     toast(`${qty} cópia${qty>1?'s':''} criada${qty>1?'s':''}! ⧉`);
   }catch(e){toast('Erro ao duplicar',true);}
 }
-
+ 
 function goTo(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.getElementById('view-'+name).classList.add('on');
@@ -630,9 +625,9 @@ function goTo(name){
   if(name==='dash')renderDash();
   if(name==='hist')renderHist();
 }
-
+ 
 function toast(msg,err){const el=document.getElementById('toast');el.textContent=msg;el.className='toast'+(err?' err':'')+' show';setTimeout(()=>el.classList.remove('show'),3000);}
-
+ 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));}
 </script>
 </body>
