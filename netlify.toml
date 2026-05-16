@@ -1,8 +1,6 @@
-# Netlify config — injeta as variáveis de ambiente no config.js antes de servir o site
-
 [build]
-  command   = "node generate-config.js"
-  publish   = "."
+  publish = "."
 
 [build.environment]
   NODE_VERSION = "18"
+  SECRETS_SCAN_ENABLED = "false"
