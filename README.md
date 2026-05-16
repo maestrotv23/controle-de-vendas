@@ -1,4 +1,4 @@
-# 📊 Dashboard de Vendas — Editor de Vídeo
+# 📊 Dashboard de Vendas Editor de Vídeo
 
 Dashboard web para controle de vendas e faturamento, desenvolvido para editores de vídeo freelancers.
 
